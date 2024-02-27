@@ -15,7 +15,10 @@ final class RouterFactory
 	public static function createRouter(): RouteList
 	{
 		$router = new RouteList;
-		$router->addRoute('<presenter>/<action>[/<id>]', 'Form:form');
+		$router->addRoute('jsform/', 'JsForm:jsForm');
+		$router->addRoute('phpform/', 'PhpForm:phpForm');
+		$router->addRoute('<presenter>/<action>[/<id>]', 'PhpForm:phpForm');
+		
 		return $router;
 	}
 }

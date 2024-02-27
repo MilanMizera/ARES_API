@@ -7,7 +7,7 @@ namespace App\Presenters;
 use Nette;
 use Nette\Application\UI\Form;
 
-final class FormPresenter extends Nette\Application\UI\Presenter
+final class PhpFormPresenter extends Nette\Application\UI\Presenter
 {
 
     protected function createComponentIcoForm(): Form
