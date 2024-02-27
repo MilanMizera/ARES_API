@@ -7,10 +7,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.7);
-  }
-  
-  .modal-content {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -18,22 +18,37 @@
     background-color: #fefefe;
     padding: 20px;
     border: 1px solid #888;
-  }
-  
-  .close {
+}
+
+.close {
     position: absolute;
     top: 0;
     right: 0;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
-  }
-  
+}
+
 .error {
 
-color: red;
+    color: red;
 
 }
 
+.formWrapper {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  /*PHP FORM*/
+
+}
+
+.close {
+
+    margin-right: 5px;
+
+
+}
+
+/*PHP FORM*/

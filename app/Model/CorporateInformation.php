@@ -7,19 +7,21 @@ namespace App\Model;
 class CorporateInformation
 {
 
-
-
-
-    public function takeCorporateInformation()
+    public function apiResponse($ico)
     {
 
-        $url = 'https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/<ICO>';
+        $url = 'https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/' . $ico;
 
-        $response = file_get_contents($url);
+        $response = file_get_contents( $url, FALSE, stream_context_create(array(
+            'http' => array(
+                'ignore_errors' => true
+             )
+        )));
 
         $data = json_decode($response, true);
 
-        var_dump($data);
+        bdump($data);
+       
     }
 
 

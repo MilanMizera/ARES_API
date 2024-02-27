@@ -5,11 +5,7 @@ function closeModal() {
 }
 
 
-
-
 function apiResponse() {
-
-
 
     var modal = document.getElementById('myModal');
     modal.style.display = 'block';
@@ -37,24 +33,27 @@ function apiResponse() {
                 dataContainer.innerHTML = "";
 
                 if (data.popis) {
+
                     let description = document.createElement("p")
                     dataContainer.innerHTML += '<p class="error">' + "Chyba: " + 'OOPS! subjekt nenalezen.' + '</p>';
                     dataContainer.appendChild(description);
+
+                } else if (!data.popis) {
+
+                    let ico = document.createElement("p")
+                    dataContainer.innerHTML += '<p>' + "IČO: " + data.ico + '</p>';
+                    dataContainer.appendChild(ico);
+
+                    let name = document.createElement("p")
+                    dataContainer.innerHTML += '<p>' + "Obchodní jméno: " + data.obchodniJmeno + '</p>';
+                    dataContainer.appendChild(name);
+
+
+
+                    let creationDate = document.createElement("p")
+                    dataContainer.innerHTML += '<p>' + "Datum vzniku: " + data.datumVzniku + '</p>';
+                    dataContainer.appendChild(creationDate);
                 }
-
-                let ico = document.createElement("p")
-                dataContainer.innerHTML += '<p>' + "IČO: " + data.ico + '</p>';
-                dataContainer.appendChild(ico);
-
-                let name = document.createElement("p")
-                dataContainer.innerHTML += '<p>' + "Obchodní jméno: " + data.obchodniJmeno + '</p>';
-                dataContainer.appendChild(name);
-
-
-
-                let creationDate = document.createElement("p")
-                dataContainer.innerHTML += '<p>' + "Datum vzniku: " + data.datumVzniku + '</p>';
-                dataContainer.appendChild(creationDate);
 
             })
     }
