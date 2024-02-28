@@ -35,7 +35,7 @@ function apiResponse() {
                 if (data.popis) {
 
                     let description = document.createElement("p")
-                    dataContainer.innerHTML += '<p class="error">' + "Chyba: " + 'OOPS! subjekt nenalezen.' + '</p>';
+                    dataContainer.innerHTML += '<p id="error">' + "Chyba: " + 'OOPS! subjekt nenalezen.' + '</p>';
                     dataContainer.appendChild(description);
 
                 } else if (!data.popis) {

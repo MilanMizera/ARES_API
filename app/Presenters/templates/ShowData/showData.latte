@@ -1,8 +1,13 @@
 
-{if $data}
-    {if $data['popis']}
-       Hele sorry mame tu chybu
-    {else}
-      Obchodni jmeno: {$data['obchodniJmeno']}
-    {/if}
-{/if}
+{ifset $data['popis']}
+	<p id="error">OOPS! subjekt nenalezen</p>
+
+{else}
+	
+<p>IČO: {$data['ico']}</p>
+<p>Obchodní jméno: {$data['obchodniJmeno']}</p>
+<p>Datum vzniku: {$data['datumVzniku']}</p>
+
+{/ifset}
+
+
