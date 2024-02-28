@@ -41,17 +41,17 @@ function apiResponse() {
                 } else if (!data.popis) {
 
                     let ico = document.createElement("p")
-                    dataContainer.innerHTML += '<p>' + "IČO: " + data.ico + '</p>';
+                    dataContainer.innerHTML += '<p id="js_corp_info">' + '<b>' + "IČO: " + '</b>' + data.ico + '</p>';
                     dataContainer.appendChild(ico);
 
                     let name = document.createElement("p")
-                    dataContainer.innerHTML += '<p>' + "Obchodní jméno: " + data.obchodniJmeno + '</p>';
+                    dataContainer.innerHTML += '<p id="js_corp_info">' + '<b>' + "Obchodní jméno: " + '</b>' + data.obchodniJmeno + '</p>';
                     dataContainer.appendChild(name);
 
 
 
                     let creationDate = document.createElement("p")
-                    dataContainer.innerHTML += '<p>' + "Datum vzniku: " + data.datumVzniku + '</p>';
+                    dataContainer.innerHTML += '<p id="js_corp_info">' + '<b>' + "Datum vzniku: " + '</b>' + data.datumVzniku + '</p>';
                     dataContainer.appendChild(creationDate);
                 }
 

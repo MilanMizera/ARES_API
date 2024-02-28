@@ -15,9 +15,17 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fefefe;
+    background-color: #e3ffe3;
     padding: 20px;
     border: 1px solid #888;
+}
+
+#form_btn {
+
+    margin-left: 40px;
+    margin-top: 5px;
+
+
 }
 
 .close {
@@ -35,20 +43,94 @@
 
 }
 
+#js_corp_info {
+
+
+    margin-top: 20px;
+
+}
+
+
 .formWrapper {
     height: 300px;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.close {
+
+    margin-right: 8px;
+    margin-top: 2px;
+
+}
+
+/*PHP FORM*/
+
+#form_background {
+
+    background-color: rgb(102, 223, 102);
+    padding: 50px;
+
+
+}
+
+#php_form_wrapper {
+
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#corporation_information {
+
+    text-align: center;
+    font-size: 18px;
+
+}
+
+#corporation_title {
+
+    font-size: 23px;
+    text-align: center;
+    text-decoration: underline;
+
+
+}
+
+#corportation_info_wrapper {
+
+
+    height: 500px;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
 
 }
 
-.close {
+#corportation_info_wrapper_background {
 
-    margin-right: 5px;
+
+    background-color: #e3ffe3;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 
 }
 
-/*PHP FORM*/
+#my_arrow {
+
+    margin-top: 10px;
+    cursor: pointer;
+
+}

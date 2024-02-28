@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Presenters;
@@ -9,7 +10,11 @@ use Nette\Application\UI\Form;
 
 final class PhpFormPresenter extends Nette\Application\UI\Presenter
 {
-   
+
+
+    public function renderPhpForm(): void
+    {
+    }
 
     protected function createComponentPhpForm(): Form
     {
@@ -17,7 +22,7 @@ final class PhpFormPresenter extends Nette\Application\UI\Presenter
         $form->addInteger('ico', 'IČO:')
             ->setRequired('Prosím, vyplňte dané pole.');
 
-        $form->addSubmit('send', 'odeslat');
+        $form->addSubmit('send', 'Odeslat');
         $form->onSuccess[] = [$this, 'formSucceeded'];
         return $form;
     }
@@ -28,23 +33,17 @@ final class PhpFormPresenter extends Nette\Application\UI\Presenter
 
         $url = 'https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/' . $data->ico;
 
-        $response = file_get_contents( $url, FALSE, stream_context_create(array(
+        $response = file_get_contents($url, FALSE, stream_context_create(array(
             'http' => array(
                 'ignore_errors' => true
-             )
+            )
         )));
 
         $data = json_decode($response, true);
 
         bdump($data);
 
-// Přesměrování na DruhyPresenter s daty
-  $this->redirect('ShowData:showData', ['data' => $data]);
-
-
+        // Přesměrování na DruhyPresenter s daty
+        $this->redirect('ShowData:showData', ['data' => $data]);
     }
-
-
-
 }
- 

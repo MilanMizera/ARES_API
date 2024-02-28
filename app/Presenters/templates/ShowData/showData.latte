@@ -1,13 +1,18 @@
+{block content}
 
-{ifset $data['popis']}
-	<p id="error">OOPS! subjekt nenalezen</p>
+    <div id="corportation_info_wrapper">
+    <div id="corportation_info_wrapper_background">
+        {ifset $data['popis']}
+            <p id="error">OOPS! subjekt nenalezen</p>
+            <a n:href="PhpForm:phpForm"><i id="my_arrow" class="bi bi-arrow-left"> Zpět</i></a>
 
-{else}
-	
-<p>IČO: {$data['ico']}</p>
-<p>Obchodní jméno: {$data['obchodniJmeno']}</p>
-<p>Datum vzniku: {$data['datumVzniku']}</p>
-
-{/ifset}
-
+        {else}
+            <h2 id="corporation_title">Informace o subjektu</h2>
+            <p id="corporation_information"><b>IČO:</b> {$data['ico']}</p>
+            <p id="corporation_information"><b>Obchodní jméno:</b> {$data['obchodniJmeno']}</p>
+            <p id="corporation_information"><b>Datum vzniku:</b> {$data['datumVzniku']}</p>
+            <a n:href="PhpForm:phpForm"><i id="my_arrow" class="bi bi-arrow-left"> Zpět</i></a>
+        {/ifset}
+        </div>
+    </div>
 

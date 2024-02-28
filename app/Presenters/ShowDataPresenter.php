@@ -7,14 +7,13 @@ use Nette;
 
 final class ShowDataPresenter extends Nette\Application\UI\Presenter
 {
-    
 
-    public function renderShowData( array $data): void {
+
+    public function renderShowData(array $data): void
+    {
 
         bdump($data);
         $this->template->data = $data;
- 
-       
     }
 
 
@@ -24,5 +23,4 @@ final class ShowDataPresenter extends Nette\Application\UI\Presenter
         // Zde zpracujte přijatá data
         $this->template->data = $data;
     }
-
 }
