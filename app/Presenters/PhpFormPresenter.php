@@ -19,8 +19,11 @@ final class PhpFormPresenter extends Nette\Application\UI\Presenter
     protected function createComponentPhpForm(): Form
     {
         $form = new Form;
-        $form->addInteger('ico', 'IČO:')
-            ->setRequired('Prosím, vyplňte dané pole.');
+        $form->addText('ico', 'IČO:')
+            ->setRequired('Prosím, vyplňte dané pole.')
+            ->addRule(Form::MaxLength, 'IČO musí obsahovat přesně 8 znaků.', 8)
+            ->addRule(Form::MinLength, 'IČO musí obsahovat přesně 8 znaků', 8);
+
 
         $form->addSubmit('send', 'Odeslat');
         $form->onSuccess[] = [$this, 'formSucceeded'];

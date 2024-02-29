@@ -1,13 +1,15 @@
 
 function closeModal() {
-    var modal = document.getElementById('myModal');
+    let modal = document.getElementById('myModal');
     modal.style.display = 'none';
 }
 
 
-function apiResponse() {
+function apiResponse(event) {
 
-    var modal = document.getElementById('myModal');
+    event.preventDefault()
+
+    let modal = document.getElementById('myModal');
     modal.style.display = 'block';
 
     let ico = document.getElementById("userData").value;
@@ -16,8 +18,9 @@ function apiResponse() {
     if (!ico) {
 
         let error = "Prosím vyplňte pole";
-        var dataContainer = document.getElementById('dataContainer');
+        let dataContainer = document.getElementById('dataContainer');
         dataContainer.innerHTML = '<p>' + error + '</p>';
+
 
     } else {
 

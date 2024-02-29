@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Presenters;
 
 use Nette;
@@ -13,14 +15,6 @@ final class ShowDataPresenter extends Nette\Application\UI\Presenter
     {
 
         bdump($data);
-        $this->template->data = $data;
-    }
-
-
-
-    public function actionProcessData($data)
-    {
-        // Zde zpracujte přijatá data
         $this->template->data = $data;
     }
 }
