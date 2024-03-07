@@ -186,3 +186,15 @@
     color: rgb(95, 212, 144);
 
 }
+
+
+/*Media queries*/
+
+
+@media only screen and (max-width: 320px) {
+
+    html {
+      width: 100%;
+      background-color: blue;
+    }
+  }

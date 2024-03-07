@@ -6,10 +6,19 @@ namespace App\Presenters;
 
 use Nette;
 use Nette\Application\UI\Form;
+use App\Extensions\Ares\Ares;
 
 
 final class PhpFormPresenter extends Nette\Application\UI\Presenter
 {
+
+
+
+    public function __construct(
+        private Ares $ares
+
+    ) {
+    }
 
 
     public function renderPhpForm(): void
@@ -33,20 +42,10 @@ final class PhpFormPresenter extends Nette\Application\UI\Presenter
     public function formSucceeded(Form $form, $data): void
     {
 
-
-        $url = 'https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/' . $data->ico;
-
-        $response = file_get_contents($url, FALSE, stream_context_create(array(
-            'http' => array(
-                'ignore_errors' => true
-            )
-        )));
-
-        $data = json_decode($response, true);
-
-        bdump($data);
+        $apiResponse= $this->ares->provideData($data->ico);
 
         // Přesměrování na DruhyPresenter s daty
-        $this->redirect('ShowData:showData', ['data' => $data]);
+        bdump($apiResponse);
+        $this->redirect('ShowData:showData', ['apiResponse' => $apiResponse]);
     }
 }

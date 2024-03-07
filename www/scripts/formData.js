@@ -4,6 +4,15 @@ function closeModal() {
     modal.style.display = 'none';
 }
 
+function handleChange() {
+
+let ico = document.getElementById("userData")
+
+console.log(ico)
+
+
+}
+
 
 function apiResponse(event) {
 

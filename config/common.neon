@@ -19,3 +19,6 @@ di:
 	export:
 		parameters: no
 		tags: no
+
+extensions:
+    ares: \App\Extensions\Ares\AresExtension

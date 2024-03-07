@@ -1,25 +1,24 @@
 
 {block content}
 <div class="formWrapper">
-<h2>Vyhledejte ekonomické subjekty na ARESU 🔎</h2>
-<div id="form_background">
-    <form onsubmit="apiResponse(event)" id="js_form">
-        <label for="userData"><b>IČO:</b></label>
-        <input type="text" id="userData" name="cislaInput" maxlength="8" minlength="8">>
-        <br>
-        <button id="form_btn" type="submit">Odeslat</button>
-    </form>
-</div>
-
-
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-   <h2 id="corporation_title">Informace o subjektu</h2>
-      <div id="dataContainer">
-         
-      </div>
+    <h2>Vyhledejte ekonomické subjekty na ARESU 🔎</h2>
+    <div id="form_background">
+        <form onsubmit="apiResponse(event)" id="js_form">
+            <label for="userData"><b>IČO:</b></label>
+            <input onChange="handleChange()" type="text" id="userData" name="cislaInput" maxlength="8" minlength="8">
+            <br>
+            <button id="form_btn" type="submit">Odeslat</button>
+        </form>
     </div>
-</div>
+
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <h2 id="corporation_title">Informace o subjektu</h2>
+          <div id="dataContainer">
+          </div>
+       </div>
+   </div>
 
     <script src="{$basePath}/scripts/formData.js"></script>

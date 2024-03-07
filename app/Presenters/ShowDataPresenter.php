@@ -11,10 +11,10 @@ final class ShowDataPresenter extends Nette\Application\UI\Presenter
 {
 
 
-    public function renderShowData(array $data): void
+    public function renderShowData(array $apiResponse): void
     {
 
-        bdump($data);
-        $this->template->data = $data;
+        bdump($apiResponse);
+        $this->template->data = $apiResponse;
     }
 }
