@@ -100,6 +100,7 @@
 #php_form_wrapper {
 
     height: 300px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -118,6 +119,15 @@
 
     text-align: center;
     font-size: 18px;
+
+}
+
+.ares_main_title {
+
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 50px;
+
 
 }
 
@@ -171,6 +181,7 @@
     background-color: rgb(0, 0, 0);
     padding-top: 10px;
     padding-bottom: 10px;
+    width: 100%;
 
 
 }
@@ -187,14 +198,25 @@
 
 }
 
+/*map*/
+
+.map_wrapper {
+
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+
+}
+
 
 /*Media queries*/
 
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 340px) {
 
-    html {
-      width: 100%;
-      background-color: blue;
-    }
-  }
+    
+    
+}

@@ -19,16 +19,41 @@ class Ares
             )
         )));
 
-        $data = json_decode($response, true);
+        $aresData = json_decode($response, true);
 
-
+        bdump($aresData);
 
         $apiKey = 'hg8iVVPgHzAZIpAh5AoK5TZRR3aHgvrgKwZ8rA-Alrg';
-        $address = ''. $data['nazevObce'] . $data['nazevUlice'] . $data['cisloDomovni'] ;
+        $adress =  $aresData['sidlo']['nazevObce'] . " " . $aresData['sidlo']['nazevUlice'] . " " . $aresData['sidlo']['cisloDomovni'];
+        bdump($adress);
 
-        $mapyUrl = 'https://api.mapy.cz/v1/geocode?apikey={$apiKey}&query={$adress}';
+        $mapUrl = "https://api.mapy.cz/v1/geocode?apikey={$apiKey}&query={$adress}";
 
 
-        return $data;
+        $response = file_get_contents($mapUrl, FALSE, stream_context_create(array(
+            'http' => array(
+                'ignore_errors' => true
+            )
+        )));
+
+        $mapData = json_decode($response, true);
+
+
+        $result = [
+
+        'ico' => $aresData['ico'], 
+        'datumVzniku' => $aresData['datumVzniku'],
+        'datumAktualizace' => $aresData['datumAktualizace'],
+        'obchodniJmeno' => $aresData['obchodniJmeno'],
+        'pravniForma' => $aresData['pravniForma'],
+        'sidlo' => $aresData['sidlo'],
+        'mapUrl' => $mapUrl,
+        
+        
+     ];
+
+       
+        
+        return $result;
     }
 }

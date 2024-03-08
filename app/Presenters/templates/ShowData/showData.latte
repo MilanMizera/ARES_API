@@ -1,23 +1,26 @@
 {block content}
 
     <div id="corportation_info_wrapper">
-    <div id="corportation_info_wrapper_background">
-        {ifset $data['popis']}
-            <p id="error">OOPS! subjekt nenalezen</p>
-            <a n:href="PhpForm:phpForm"><i id="my_arrow" class="bi bi-arrow-left"> Zpět</i></a>
+       <div id="corportation_info_wrapper_background">
+            {ifset $data['popis']}
+                <p id="error">OOPS! subjekt nenalezen</p>
+                <a n:href="PhpForm:phpForm"><i id="my_arrow" class="bi bi-arrow-left"> Zpět</i></a>
 
-        {else}
-            <h2 id="corporation_title">Informace o subjektu</h2>
-            <p id="corporation_information"><b>IČO:</b> {$data['ico']}</p>
-            <p id="corporation_information"><b>Obchodní jméno:</b> {$data['obchodniJmeno']}</p>
-            <p id="corporation_information"><b>Datum vzniku:</b> {$data['datumVzniku']}</p>
-            <p id="corporation_information"><b>Datum aktualizace:</b> {$data['datumAktualizace']}</p>
-            <p id="corporation_information"><b>Pravní forma:</b> {$data['pravniForma']}</p>
+            {else}
+                <h2 id="corporation_title">Informace o subjektu</h2>
+                <p id="corporation_information"><b>IČO:</b> {$data['ico']}</p>
+                <p id="corporation_information"><b>Obchodní jméno:</b> {$data['obchodniJmeno']}</p>
+                <p id="corporation_information"><b>Datum vzniku:</b> {$data['datumVzniku']}</p>
+                <p id="corporation_information"><b>Datum aktualizace:</b> {$data['datumAktualizace']}</p>
+                <p id="corporation_information"><b>Pravní forma:</b> {$data['pravniForma']}</p>
 
-       
-            <a n:href="PhpForm:phpForm"><i id="my_arrow" class="bi bi-arrow-left"> Zpět</i></a>
+                <a n:href="PhpForm:phpForm"><i id="my_arrow" class="bi bi-arrow-left"> Zpět</i></a>
 
-        {/ifset}
+            {/ifset}
         </div>
     </div>
 
+<div class="map_wrapper">
+    <p id="corporation_title">Sídlo firmy:</p>
+    <iframe style="border:none" src="{$data['mapUrl']}" width="600" height="280" frameborder="0"></iframe>
+</div>
