@@ -212,6 +212,19 @@ align-items: center;
 }
 
 
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20%;
+  }
+  
+  .logocontrol {
+    bottom: 0;
+  }
+  
+
+
 /*Media queries*/
 
 

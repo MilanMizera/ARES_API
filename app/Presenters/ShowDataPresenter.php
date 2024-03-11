@@ -14,7 +14,7 @@ final class ShowDataPresenter extends Nette\Application\UI\Presenter
     public function renderShowData(array $apiResponse): void
     {
 
-        bdump($apiResponse);
+        
         $this->template->data = $apiResponse;
     }
 }

@@ -13,47 +13,55 @@ class Ares
 
         $aresUrl = 'https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/' . $ico;
 
-        $response = file_get_contents($aresUrl, FALSE, stream_context_create(array(
+        $responseAres = file_get_contents($aresUrl, FALSE, stream_context_create(array(
             'http' => array(
                 'ignore_errors' => true
             )
         )));
 
-        $aresData = json_decode($response, true);
+        $aresData = json_decode($responseAres, true);
 
         bdump($aresData);
 
         $apiKey = 'hg8iVVPgHzAZIpAh5AoK5TZRR3aHgvrgKwZ8rA-Alrg';
-        $adress =  $aresData['sidlo']['nazevObce'] . " " . $aresData['sidlo']['nazevUlice'] . " " . $aresData['sidlo']['cisloDomovni'];
-        bdump($adress);
-
-        $mapUrl = "https://api.mapy.cz/v1/geocode?apikey={$apiKey}&query={$adress}";
 
 
-        $response = file_get_contents($mapUrl, FALSE, stream_context_create(array(
+        $adress =  $aresData['sidlo']['nazevUlice']. " " . $aresData['sidlo']['cisloDomovni']. ", " .$aresData['sidlo']['nazevObce'];
+        $encodedAddress = urlencode($adress);
+
+
+
+        $mapUrl = "https://api.mapy.cz/v1/geocode?apikey=$apiKey&query=$encodedAddress";
+
+
+
+        $responseMap = file_get_contents($mapUrl, FALSE, stream_context_create(array(
             'http' => array(
                 'ignore_errors' => true
             )
         )));
+  
+   
 
-        $mapData = json_decode($response, true);
+        $mapData = json_decode($responseMap, true);
 
+        bdump($mapData);
 
         $result = [
 
-        'ico' => $aresData['ico'], 
-        'datumVzniku' => $aresData['datumVzniku'],
-        'datumAktualizace' => $aresData['datumAktualizace'],
-        'obchodniJmeno' => $aresData['obchodniJmeno'],
-        'pravniForma' => $aresData['pravniForma'],
-        'sidlo' => $aresData['sidlo'],
-        'mapUrl' => $mapUrl,
-        
-        
-     ];
+            'ico' => $aresData['ico'],
+            'datumVzniku' => $aresData['datumVzniku'],
+            'datumAktualizace' => $aresData['datumAktualizace'],
+            'obchodniJmeno' => $aresData['obchodniJmeno'],
+            'pravniForma' => $aresData['pravniForma'],
+            'sidlo' => $aresData['sidlo'],
+            'lon' => $mapData['items'][0]['position']['lon'],
+            'lat' => $mapData['items'][0]['position']['lat'],
 
-       
-        
+        ];
+
+
+
         return $result;
     }
 }
