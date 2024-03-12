@@ -1,16 +1,6 @@
-
 function closeModal() {
     let modal = document.getElementById('myModal');
     modal.style.display = 'none';
-}
-
-function handleChange() {
-
-let ico = document.getElementById("userData")
-
-console.log(ico)
-
-
 }
 
 
@@ -33,7 +23,7 @@ function apiResponse(event) {
 
     } else {
 
-        let url = 'https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/' + ico;
+        let url = "{link JsForm:data}?ico=" + encodeURIComponent(ico);
 
         fetch(url)
             .then((response) => response.json())
@@ -65,10 +55,24 @@ function apiResponse(event) {
                     let creationDate = document.createElement("p")
                     dataContainer.innerHTML += '<p id="js_corp_info">' + '<b>' + "Datum vzniku: " + '</b>' + data.datumVzniku + '</p>';
                     dataContainer.appendChild(creationDate);
+
+
+                     
                 }
 
             })
     }
 
 
-}
+}                     
+
+
+
+
+
+
+
+
+
+
+

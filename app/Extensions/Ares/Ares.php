@@ -60,8 +60,6 @@ class Ares
 
         ];
 
-
-
         return $result;
     }
 }

@@ -10,7 +10,6 @@ use Nette;
 final class ShowDataPresenter extends Nette\Application\UI\Presenter
 {
 
-
     public function renderShowData(array $apiResponse): void
     {
 

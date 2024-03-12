@@ -199,8 +199,7 @@
 }
 
 /*map*/
-
-.map_wrapper {
+#map_wrapper {
 
 
 display: flex;
@@ -213,10 +212,14 @@ align-items: center;
 
 
 #map {
+    
     position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 20%;
+    top: 10;
+    bottom: 1;
+    margin-top: 200px;
+    width: 600px;
+    height: 200px;
+    
   }
   
   .logocontrol {

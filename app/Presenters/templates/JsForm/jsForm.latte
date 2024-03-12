@@ -21,4 +21,117 @@
        </div>
    </div>
 
-    <script src="{$basePath}/scripts/formData.js"></script>
+    <script>
+
+
+
+function closeModal() {
+    let modal = document.getElementById('myModal');
+    modal.style.display = 'none';
+}
+
+
+function apiResponse(event) {
+
+    event.preventDefault()
+
+    let modal = document.getElementById('myModal');
+    modal.style.display = 'block';
+
+    let ico = document.getElementById("userData").value;
+
+
+    if (!ico) {
+
+        let error = "Prosím vyplňte pole";
+        let dataContainer = document.getElementById('dataContainer');
+        dataContainer.innerHTML = '<p>' + error + '</p>';
+
+
+    } else {
+
+  
+  let url = {link 'JsForm:data',ico};
+
+  console.log(url);
+
+        fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                console.log(data.popis)
+
+                let dataContainer = document.getElementById('dataContainer');
+                dataContainer.innerHTML = "";
+
+                if (data.popis) {
+
+                    let description = document.createElement("p")
+                    dataContainer.innerHTML += '<p id="error">' + "Chyba: " + 'OOPS! subjekt nenalezen.' + '</p>';
+                    dataContainer.appendChild(description);
+
+                } else if (!data.popis) {
+
+                    let ico = document.createElement("p")
+                    dataContainer.innerHTML += '<p id="js_corp_info">' + '<b>' + "IČO: " + '</b>' + data.ico + '</p>';
+                    dataContainer.appendChild(ico);
+
+                    let name = document.createElement("p")
+                    dataContainer.innerHTML += '<p id="js_corp_info">' + '<b>' + "Obchodní jméno: " + '</b>' + data.obchodniJmeno + '</p>';
+                    dataContainer.appendChild(name);
+
+
+
+                    let creationDate = document.createElement("p")
+                    dataContainer.innerHTML += '<p id="js_corp_info">' + '<b>' + "Datum vzniku: " + '</b>' + data.datumVzniku + '</p>';
+                    dataContainer.appendChild(creationDate);
+
+
+                     
+                }
+
+            })
+    }
+
+
+}                     
+
+
+const map = L.map('map').setView([{$data['lat']}, {$data['lon']}], 16);
+
+
+L.tileLayer({='"https://api.mapy.cz/v1/maptiles/basic/256/{z}/{x}/{y}?apikey=hg8iVVPgHzAZIpAh5AoK5TZRR3aHgvrgKwZ8rA-Alrg"'|noescape}
+, {
+  minZoom: 0,
+  maxZoom: 19,
+  attribution: '<a href="https://api.mapy.cz/copyright" target="_blank">&copy; Seznam.cz a.s. a další</a>',
+}).addTo(map);
+
+L.marker([{$data['lat']}, {$data['lon']}]).addTo(map)
+    .bindPopup('Sídlo firmy:<br> {$data['obchodniJmeno']}.')
+    .openPopup();
+
+
+const LogoControl = L.Control.extend({
+  options: {
+    position: 'bottomleft',
+  },
+
+  onAdd: function (map) {
+    const container = L.DomUtil.create('div');
+    const link = L.DomUtil.create('a', '', container);
+
+    link.setAttribute('href', 'http://mapy.cz/');
+    link.setAttribute('target', '_blank');
+    link.innerHTML = '<img src="https://api.mapy.cz/img/api/logo.svg" />';
+    L.DomEvent.disableClickPropagation(link);
+
+    return container;
+  },
+});
+
+
+new LogoControl().addTo(map);
+
+
+</script>
